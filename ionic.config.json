@@ -1,0 +1,7 @@
+{
+  "name": "EmergencyDisasterSystem",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
