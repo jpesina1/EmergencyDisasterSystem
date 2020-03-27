@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ShelterDetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>Input shelter information </h1>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input
+        required
+        type="text"
+        placeholder="Address"
+        [(ngModel)]="shelter.Address"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        required
+        type="number"
+        placeholder="Latitude"
+        [(ngModel)]="shelter.Latitude"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        required
+        type="number"
+        placeholder="Longitude"
+        [(ngModel)]="shelter.Longitude"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        required
+        type="text"
+        placeholder="Name"
+        [(ngModel)]="shelter.Name"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        required
+        type="text"
+        placeholder="Shelter_ID"
+        [(ngModel)]="shelter.Shelter_ID"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="saveShelter()">Save</ion-button>
+</ion-content>

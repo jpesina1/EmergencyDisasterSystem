@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Help Page
+    </ion-title>
+
+    <ion-button slot="end" *ngIf="afAuth.auth.currentUser" (click)="signOut()">
+      Sign Out
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>  How to use this app:</h1>
+
+  <ion-card>
+    <ion-card-content slot>
+      <p>
+        <b>How to use Maps:</b>
+        <br />
+        Explanation
+        <br />
+        <b>How to view Shelter:</b>
+        <br />
+        Explanation
+        <br />
+        <b>How to Log In (Data Entry Only):</b>
+        <br />
+        Explanation
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <firebase-ui></firebase-ui>
+  <h4 *ngIf="afAuth.auth.currentUser">Welcome Jacob</h4>
+</ion-content>
