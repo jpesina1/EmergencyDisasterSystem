@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title class="ion-text-center">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" color="light">
       Help Page
     </ion-title>
 
@@ -11,25 +11,34 @@
 </ion-header>
 
 <ion-content>
-  <h1>  How to use this app:</h1>
+  <h1 align="center">How to use this app</h1>
 
   <ion-card>
     <ion-card-content slot>
       <p>
-        <b>How to use Maps:</b>
+        <b>Map View Information:</b>
         <br />
-        Explanation
+        The map view in this application is created so that any user may view
+        the shelters on the map, while also providing the user's location in
+        relation to the shelters.
         <br />
-        <b>How to view Shelter:</b>
+        <b>Shelter View Information:</b>
         <br />
-        Explanation
+        The shelter view in this application is created so that any user may
+        view a list of available shelters. A user may chose to select a specific
+        shelter and gain some more information regarding the shelter's
+        availability and supply levels.
         <br />
         <b>How to Log In (Data Entry Only):</b>
         <br />
-        Explanation
+        If you are a member of the Emergency Disaster System team, your log-in
+        information should have been provided. If you forget your log-in
+        information or are unable to log-in, please contact an administrator so
+        that information may be recovered. Please log in so that you may
+        continue completing your task.
       </p>
     </ion-card-content>
   </ion-card>
   <firebase-ui></firebase-ui>
-  <h4 *ngIf="afAuth.auth.currentUser">Welcome Jacob</h4>
 </ion-content>
+
