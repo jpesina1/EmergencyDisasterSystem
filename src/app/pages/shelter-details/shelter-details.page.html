@@ -3,53 +3,63 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tab3"></ion-back-button>
     </ion-buttons>
-    <ion-title>ShelterDetails</ion-title>
+    <ion-title>Shelter Information</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>Input shelter information </h1>
   <ion-list lines="full">
     <ion-item>
+      <ion-label>Shelter Name: </ion-label>
       <ion-input
         required
         type="text"
-        placeholder="Address"
-        [(ngModel)]="shelter.Address"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        required
-        type="number"
-        placeholder="Latitude"
-        [(ngModel)]="shelter.Latitude"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        required
-        type="number"
-        placeholder="Longitude"
-        [(ngModel)]="shelter.Longitude"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        required
-        type="text"
-        placeholder="Name"
         [(ngModel)]="shelter.Name"
+        readonly
       ></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label>Shelter Address: </ion-label>
       <ion-input
         required
         type="text"
-        placeholder="Shelter_ID"
-        [(ngModel)]="shelter.Shelter_ID"
+        [(ngModel)]="shelter.Address"
+        readonly
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shelter Supply Condition: </ion-label>
+      <ion-input
+        required
+        type="text"
+        [(ngModel)]="shelter.Condition"
+        readonly
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shelter Capacity: </ion-label>
+      <ion-input
+        required
+        type="text"
+        [(ngModel)]="shelter.Population"
+        readonly
       ></ion-input>
     </ion-item>
   </ion-list>
-  <ion-button expand="full" (click)="saveShelter()">Save</ion-button>
+  <div id="map_canvas">
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ion-content>
