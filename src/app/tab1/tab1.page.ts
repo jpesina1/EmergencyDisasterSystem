@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+iimport { Component, OnInit } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -10,25 +10,57 @@ import {
 } from '@ionic-native/google-maps';
 import { ToastController, Platform, LoadingController } from '@ionic/angular';
 import { SupplyService } from '../services/supply.service';
+import { ShelterService, Shelter } from '../services/shelter.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
-
+  shelters: Shelter[];
   map: GoogleMap;
   loading: any;
+  shelter: Shelter = {
+    Address: '123 Street',
+    Latitude: 26,
+    Longitude: -98,
+    Name : 'First High School',
+    Shelter_ID: 'First',
+    Condition: "Good",
+    Population: 100
+  }
+  Shelter_ID = null;
 
   constructor(
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     private platform: Platform,
-    public supply: SupplyService) { }
+    public supply: SupplyService,
+    private shelterService: ShelterService,
+    public afAuth: AngularFireAuth) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
+    this.shelterService.getShelters().subscribe(res => {
+      this.shelters= res;
+      this.shelters.forEach(shelters => {
+        this.shelterService.getShelter(this.shelter.Shelter_ID).subscribe(red =>{
+          var lat = this.shelter.Latitude;
+          var lng = this.shelter.Longitude;
+          var name = this.shelter.Name;
+          var addy = this.shelter.Address;
+          var iconCheck = this.shelter.Condition; 
+          this.mapData(lat,lng,name,addy,iconCheck);
+          
+
+          //this.shelter = res;
+        })
+        
+      });
+    });
+
     await this.platform.ready();
     await this.loadMap();
   }
@@ -40,7 +72,7 @@ export class Tab1Page implements OnInit{
           "lat": 29.4241,
           "lng": -98.4936
         },
-        'zoom': 10
+        'zoom': 9.5
       }
     });
     //lat: 29.4241, lng: -98.4936 }, zoom: 10,
@@ -64,25 +96,23 @@ export class Tab1Page implements OnInit{
       // Move the map camera to the location with animation
       this.map.animateCamera({
         target: location.latLng,
-        zoom: 17,
+        zoom: 14,
         tilt: 30
       });
 
       // add a marker
       let marker: Marker = this.map.addMarkerSync({
-        title: '@ionic-native/google-maps plugin!',
-        snippet: 'This plugin is awesome!',
+        title: 'This is your location',
+        snippet: 'Please find the closest shelter to your location.',
         position: location.latLng,
-        animation: GoogleMapsAnimation.BOUNCE
+        animation: GoogleMapsAnimation.BOUNCE,
+        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
       });
 
       // show the infoWindow
       marker.showInfoWindow();
 
-      // If clicked it, display the alert
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-        this.showToast('clicked!');
-      });
+      this.addCluster(this.locationData());
     })
     .catch(err => {
       this.loading.dismiss();
@@ -107,14 +137,14 @@ export class Tab1Page implements OnInit{
       icons: [
         {
           min: 4,
-          max: 13,
+          max: 20,
           url: "./assets/markercluster/small.png",
           label: {
             color: "white"
           }
         },
         {
-          min: 14,
+          min: 21,
           url: "./assets/markercluster/large.png",
           label: {
             color: "white"
@@ -151,7 +181,7 @@ export class Tab1Page implements OnInit{
         },
         "name": "Sidney Lanier High School",
         "address": "1514 W César E Chávez Blvd, San Antonio, TX 78207",
-        "icon": "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+        "icon": "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
       },
       {
         "position": {
@@ -160,7 +190,7 @@ export class Tab1Page implements OnInit{
         },
         "name": "Highlands High School",
         "address": "3118 Elgin Ave, San Antonio, TX,78210",
-        "icon": "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+        "icon": "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
       },
       {
         "position": {
@@ -169,7 +199,7 @@ export class Tab1Page implements OnInit{
         },
         "name": "Earl Warren High School",
         "address": "7611 Marbach Rd, San Antonio, TX 78227 ",
-        "icon": "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
+        "icon": "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
       },
       {
         "position": {
@@ -178,7 +208,7 @@ export class Tab1Page implements OnInit{
         },
         "name": "John Jay High School",
         "address": "7611 Marbach Rd, San Antonio, TX 78227 ",
-        "icon": "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+        "icon": "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
       },
       {
         "position": {
@@ -214,7 +244,7 @@ export class Tab1Page implements OnInit{
         },
         "name": "Alamo Heights High School",
         "address": "6900 Broadway St, San Antonio, TX, 78209",
-        "icon": "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+        "icon": "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
       },
       {
         "position": {
@@ -241,7 +271,7 @@ export class Tab1Page implements OnInit{
         },
         "name": "Thomas Edison High School",
         "address": "701 Santa Monica, San Antonio, TX 78212",
-        "icon": "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+        "icon": "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
       },
       {
         "position": {
@@ -281,4 +311,42 @@ export class Tab1Page implements OnInit{
       }
     ];
   }
+ mapData(lat,lng,name,addy,iconCheck){
+  var something;
+  var counter = 0;
+  var array = [];
+  array.push({ })
+  if(iconCheck == "Abundant"){
+    something = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+  }
+  else if (iconCheck == "Ample"){
+    something ="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+  }
+  else if (iconCheck == "Moderate"){
+    something ="http://maps.google.com/mapfiles/ms/icons/orange-dot.png";
+  }
+  else if (iconCheck == "Critical"){
+    something ="http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+  }
+  else {
+    something = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+  }
+  
+
+  
+  return array;// [
+
+    /*{
+      "position": {
+        "lat": lat,
+        "lng": lng,
+      },
+      "name": name,
+      "address": addy,
+      
+      "icon": something,
+    },*/
+   //]
+ }
 }
+
