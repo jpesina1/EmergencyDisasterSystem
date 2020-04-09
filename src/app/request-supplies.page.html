@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/supply-details"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Request Supplies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label>
+    <h1 class="ion-text-center">Select Supplies to be Requested</h1>
+  </ion-label>
+
+  <ion-select
+    placeholder="Please select at least one item"
+    multiple="true"
+    value="brown"
+    ok-text="Select"
+    cancel-text="Cancel"
+    class="ion-padding"
+  >
+    <ion-select-option value="WaterBottles_24pk_16oz">
+      Water Bottles
+    </ion-select-option>
+    <ion-select-option value="WaterPurificationTablets_20pk">
+      Water Purification Tablets
+    </ion-select-option>
+    <ion-select-option value="Canned_Chicken_7oz_8pk">
+      Canned Chicken
+    </ion-select-option>
+    <ion-select-option value="Canned_Tuna_7oz_12pk">
+      Canned Tuna
+    </ion-select-option>
+    <ion-select-option value="Canned_Spam_12oz_8pk">
+      Canned Spam
+    </ion-select-option>
+    <ion-select-option value="Canned_Soup_Beef_Vegetable_11oz_12pk">
+      Canned Beef Vegetable Soup
+    </ion-select-option>
+    <ion-select-option value="Canned_Soup_Chicken_Noodle_11oz_12pk">
+      Canned Chicken Noodle Soup
+    </ion-select-option>
+    <ion-select-option value="Canned_Vegetable_Beets_106oz">
+      Canned Beets
+    </ion-select-option>
+    <ion-select-option value="Canned_Vegetable_Carrot_106oz">
+      Canned Carrots
+    </ion-select-option>
+    <ion-select-option value="Canned_Vegetable_Corn_106oz">
+      Canned Corn
+    </ion-select-option>
+    <ion-select-option value="Canned_Vegetable_GreenBean_106oz">
+      Canned Green Beans
+    </ion-select-option>
+    <ion-select-option value="Canned_Vegetable_Mixed_106oz">
+      Canned Mixed Veggies
+    </ion-select-option>
+    <ion-select-option value="Crackers_Wheat_8pk">
+      Wheat Crackers
+    </ion-select-option>
+    <ion-select-option value="Crackers_Original_8pk">
+      Original Crackers
+    </ion-select-option>
+    <ion-select-option value="Dry_Granola_Bars_2pk">
+      Granola Bars
+    </ion-select-option>
+    <ion-select-option value="Package_SaltedPeanuts_48pk_1oz">
+      Salted Peanuts
+    </ion-select-option>
+    <ion-select-option value="Package_MixedNuts_48pk_1oz">
+      Mixed Nuts
+    </ion-select-option>
+    <ion-select-option value="Package_TrailMix_24pk_2oz">
+      Trail Mix
+    </ion-select-option>
+    <ion-select-option value="Peanut_Butter_16oz">
+      Peanut Butter
+    </ion-select-option>
+  </ion-select>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="class">
+        <ion-button
+          slot
+          expand="block"
+          color="success"
+          (click)="submitRequest()"
+        >
+          Submit
+        </ion-button>
+        <ion-button
+          slot
+          expand="block"
+          color="danger"
+          defaultHref="/supply-details"
+          routerDirection="back"
+        >
+          Cancel
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
