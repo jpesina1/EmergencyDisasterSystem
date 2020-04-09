@@ -12,7 +12,6 @@
     <ion-item>
       <ion-label>Shelter Name:</ion-label>
       <ion-input
-        
         required
         type="text"
         placeholder="Name"
@@ -23,7 +22,6 @@
     <ion-item>
       <ion-label><h2>Shelter Address:</h2></ion-label>
       <ion-input
-        
         required
         type="text"
         placeholder="Address"
@@ -48,18 +46,29 @@
         type="string"
         placeholder="Shelter Condition"
         [(ngModel)]="supply.Shelter_Condition"
-        
+        readonly
+      >
+      </ion-input>
+      <ion-button color="danger" [routerLink]="['/request-supplies']" *ngIf="supply.Shelter_Condition== 'Critical'">
+        <ion-icon slot="end" name="warning"></ion-icon>
+          Request Supplies
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label><h2>Estimated Delivery:</h2></ion-label>
+      <ion-input
+        required
+        type="string"
+        placeholder="Delivery Time"
+        [(ngModel)]="supply.Delivery_Time"
+        readonly
       ></ion-input>
     </ion-item>
-
-
-
-
 
     <ion-item>
       <ion-label><h2>Water Bottles(16oz,24pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Water Bottles(16oz,24pk)"
@@ -69,7 +78,7 @@
     <ion-item>
       <ion-label><h2>Water Purification Tablets (20pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Water Purification Tablets (20pk)"
@@ -79,7 +88,7 @@
     <ion-item>
       <ion-label><h2>Canned Chicken(7oz, 8pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Canned Chicken(7oz, 8pk)"
@@ -89,7 +98,7 @@
     <ion-item>
       <ion-label><h2>Canned Tuna(7oz,12pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Canned Tuna(7oz,12pk)"
@@ -99,7 +108,7 @@
     <ion-item>
       <ion-label><h2>Canned Spam(12oz,8pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Canned Spam(12oz,8pk)"
@@ -109,7 +118,7 @@
     <ion-item>
       <ion-label><h2>Beef Veg Soup(10.75oz,12pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Soup: Beef Vegetable(10.75, 12pk)"
@@ -119,7 +128,7 @@
     <ion-item>
       <ion-label><h2>Chicken Noo(10.75oz,12pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Soup: Chicken Noodle(10.75, 12pk)"
@@ -129,7 +138,7 @@
     <ion-item>
       <ion-label><h2>Beets (106oz):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Beets 106oz"
@@ -139,7 +148,7 @@
     <ion-item>
       <ion-label><h2>Carrots (106oz):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Carrots 106oz"
@@ -149,7 +158,7 @@
     <ion-item>
       <ion-label><h2>Corn (106oz):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Corn 106oz"
@@ -159,7 +168,7 @@
     <ion-item>
       <ion-label><h2>Green Beans (106oz):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Green Beans 106oz"
@@ -169,7 +178,7 @@
     <ion-item>
       <ion-label><h2>Mixed Vegetable (106oz):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Mixed Vegetable 106oz"
@@ -179,7 +188,7 @@
     <ion-item>
       <ion-label><h2>Wheat Crackers (8pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Wheat Crackers 8pk"
@@ -189,7 +198,7 @@
     <ion-item>
       <ion-label><h2>Original Crackers (8pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Original Crackers 8pk"
@@ -199,7 +208,7 @@
     <ion-item>
       <ion-label><h2>Granola Bars (2pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Granola Bars 2pk"
@@ -209,7 +218,7 @@
     <ion-item>
       <ion-label><h2>Salted Peanuts (1oz,48pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Salted Peanuts 1oz, 48pk"
@@ -219,7 +228,7 @@
     <ion-item>
       <ion-label><h2>Mixed Nuts (1oz,48pk):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Mixed Nuts 1oz, 48pk"
@@ -229,7 +238,7 @@
     <ion-item>
       <ion-label><h2>Trail Mix 2oz, 24pk:</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Trail Mix 2oz, 24pk"
@@ -239,7 +248,7 @@
     <ion-item>
       <ion-label><h2>Peanut Butter (16oz):</h2></ion-label>
       <ion-input
-      class="shadedInput"
+        class="shadedInput"
         required
         type="number"
         placeholder="Peanut Butter 16oz"
